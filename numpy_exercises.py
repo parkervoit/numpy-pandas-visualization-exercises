@@ -193,6 +193,7 @@ dl = [
     [60, 45, -45, 90, -45, 180]
 ]
 d = np.array(dl)
+print(d)
 # Exercise 1 - Find the sine of all the numbers in d
 sind = np.sin(d)
 # Exercise 2 - Find the cosine of all the numbers in d
