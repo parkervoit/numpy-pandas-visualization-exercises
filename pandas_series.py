@@ -154,18 +154,24 @@ letter = pd.Series(list('hnvidduckkqxwymbimkccexbkmqygkxoyndmcxnwqarhyffsjpsrabt
 #1 Which letter occurs most frequently?
 maxlet = letter[letter.value_counts().max()]
     # y 
+    
 #2 Which letter occurs least frequently?
-minet = letter[letter.value_counts().min()]
+minet = letter.value_counts().idxmax()
     # d 
+
 #3 How many vowels are in the series?
 vowels = letter[letter.apply(lambda x: True if x in ('aeiou') else False)]
-vowels.value_counts()
+vowels.value_counts().sum()
     # o : 8, a : 8, u : 7, e: 6, i : 5
+    # 34 returned
+
 #4 How many consonants are in the series?
 consonants = letter[letter.apply(lambda x: False if x in ('aeiou') else True)]
+consonants.value_counts().sum()
 # y  :  13, p  :  12, w  :  10, n  :   9, m  :   9, k  :  9, b   :  9,
 # c  :   8, r  :   8, x  :   8, h  :   8, d  :   8, q  :  8, v  :   7, 
 # z  :   7, f  :   6, j  :   6, s  :   5, g  :   5, l  :  4, t  :   7
+#166 returned
 
 #5 Create a series that has all the same letters but uppercased
 capletter = letter.str.upper()
@@ -210,5 +216,40 @@ range_of_num = maxnum - minnum
 binned = pd.cut(numbers, 4).value_counts()
 
 #8
-n_bins = [0, 1197427, (1197427 * 2), (1197427 *3), (1197427*4) ]
+n_bins = [0, 1197427, (1197427 * 2), (1197427 *3), (1197427*4)]
 plt.hist(binned, bins = n_bins)
+
+# Part III.iii
+exam_scores = pd.Series([60, 86, 75, 62, 93, 71, 60, 
+                         83, 95, 78, 65, 72, 69, 81, 
+                         96, 80, 85, 92, 82, 78])
+#1. How many elements are in the exam scores series?
+exam_scores.size   
+    # 20 values
+
+#2 Run the code to discover the min/max, mean, and median for the series
+exam_scores.describe()
+    # mean: 78.15, min 60, max 96, and median score 79
+
+#3 
+exam_scores.plot.hist(color='firebrick', width=.9)
+plt.title('Grades')
+plt.xticks(rotation=0)
+plt.xlabel('Student Tests')
+plt.ylabel('Score')
+
+#4 
+curved_scores = exam_scores + 4
+
+#5 
+grade_bins = [0 , 70 , 75, 80 , 90 , 100]
+bin_labels = ['F', 'D', 'C', 'B', 'A']
+letter_scores = pd.cut(curved_scores, bins = grade_bins, labels = bin_labels)
+
+#6
+letter_scores.value_counts().sort_index().plot.barh(color=['red','orange','yellow','green','blue'], 
+                                                    ec = 'black', width =.9)
+plt.title('Letter Grades')
+plt.xticks(rotation=0)
+plt.xlabel('Number of Scroes')
+plt.ylabel('Letter Grade')
