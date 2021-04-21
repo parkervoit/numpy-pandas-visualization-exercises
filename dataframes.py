@@ -21,7 +21,8 @@ df['passing english'] = (df['english'] > 70)
 
 #b Sort the english grades by the passing_english column. How are duplicates handled?
 df.sort_values(by='english', ascending=False)
-
+    #sorts dupes by index
+    
 #c Sort the english grades first by passing_english and then by student name. 
 # All the students that are failing english should be first, 
 # and within the students that are failing english they should be ordered alphabetically. 
@@ -147,7 +148,7 @@ min	    0.016000	1.600000
 75%	    142.500000	65.000000
 max	    6000.000000	110.000000
 '''
-# waht is the weight of the fastest animal?
+# what is the weight of the fastest animal?
 mammals.sort_values(by = 'speed', ascending = False)
     #55 units
 

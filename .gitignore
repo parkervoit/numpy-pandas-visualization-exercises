@@ -1,3 +1,5 @@
 .DS_Store
 scratch.ipynb
 env.py
+__pycache__/
+Untitled*.ipynb
