@@ -336,7 +336,7 @@ orders_df['item_price'] = orders_df['item_price'].str.replace('$','').astype(flo
     '''
 
 #3 What are the 3 most popular items?
-quantity= orders_df.groupby('item_name').sum('quantity').sort_values(by= 'quantity', ascending = False).head(3)
+quantity = orders_df.groupby('item_name').sum('quantity').sort_values(by= 'quantity', ascending = False).head(3)
 '''
                     id	        order_id	quantity	item_price
 item_name				
@@ -394,7 +394,11 @@ Name: hire_date, dtype: object
 '''
 
 #9 write the code necessary to create a cross tabulation fo the number of titles by department
-td = 'SELECT * FROM departments JOIN dept_emp USING(dept_no) JOIN titles using(emp_no) WHERE dept_emp.to_date > curdate() AND titles.to_date > curdate()'
+td = '''SELECT * FROM departments 
+            JOIN dept_emp USING(dept_no) 
+            JOIN titles using(emp_no) 
+            WHERE dept_emp.to_date > curdate() 
+            AND titles.to_date > curdate()'''
 td_df = pd.read_sql(td, url)
 pd.crosstab(td_df.dept_name, td_df.title)
 '''
