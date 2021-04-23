@@ -326,8 +326,8 @@ orders_df = get_chip_url(username, password, host)
 orders_df['item_price'] = orders_df['item_price'].str.replace('$','').astype(float)\
 # most expensive item is at 44 dollars
     #oops, heres the most expensive order total
-    order_id = orders_df.groupby('order_id').sum('item_price')
-    order_id.max()
+order_id = orders_df.groupby('order_id').sum('item_price')
+order_id.max()
     '''
     id            53268.00
     quantity         35.00
