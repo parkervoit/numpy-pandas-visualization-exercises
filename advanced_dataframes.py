@@ -286,7 +286,7 @@ mpg['is_automatic'] = np.where(mpg.trans.str.count('auto'), True, False)
 mpg['is_automatic'] = np.where(mpg.trans.str.contains('auto'), True, False)
 
 # check data type
-    mpg.info()
+mpg.info()
 
 #15
 mpg.groupby('manufacturer').average_mileage.agg('mean').sort_values(ascending = False)
@@ -328,7 +328,7 @@ orders_df['item_price'] = orders_df['item_price'].str.replace('$','').astype(flo
     #oops, heres the most expensive order total
 order_id = orders_df.groupby('order_id').sum('item_price')
 order_id.max()
-    '''
+'''
     id            53268.00
     quantity         35.00
     item_price      205.25
